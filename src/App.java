@@ -19,9 +19,15 @@ public class App {
 				gj1.setEquipes(equipes);
 				gj2.setEquipes(equipes);
 				new GroupListener(gj1, gj2, equipes1, equipes2);
-				Jukebox jukebox = new Jukebox();
-				jukebox.activeSon(true);
-				jukebox.playSon("Ouverture");
+				Thread music = new Thread(new Runnable() {
+					@Override
+					public void run() {
+						Jukebox jukebox = new Jukebox();
+						jukebox.activeSon(true);
+						jukebox.playSon("Ouverture");
+					}
+				});
+				music.start();
 			}
 		});
 	}
