@@ -28,11 +28,11 @@
 
 package javazoom.jl.converter;
 
-import java.io.PrintWriter;
-
 import javazoom.jl.decoder.Crc16;
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.decoder.OutputChannels;
+
+import java.io.PrintWriter;
 
 /**
  * The <code>jlc</code> class presents the JavaLayer
@@ -50,8 +50,7 @@ public class jlc
 		int argc = args.length + 1;
 		argv = new String[argc];
 		argv[0] = "jlc";
-		for(int i=0;i<args.length;i++)
-			argv[i+1] = args[i];
+        System.arraycopy(args, 0, argv, 1, args.length);
 
 		jlcArgs ma = new jlcArgs();
 		if (!ma.processArgs(argv))
@@ -207,10 +206,10 @@ public class jlc
 	     System.out.println("  -s         write pcm samples to stdout");
 	     System.out.println("  -d         downmix mode (layer III only)");*/
 	     System.out.println("  -p name    output as a PCM wave file");
-	     System.out.println("");
+           System.out.println();
 	     System.out.println("  More info on http://www.javazoom.net");
 	     /* System.out.println("  -f ushort  use this scalefactor instead of the default value 32768");*/
 		 return false;
 	   }
-	};
-};
+    }
+}
